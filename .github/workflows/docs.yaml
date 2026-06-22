@@ -9,7 +9,7 @@ on:
 
 jobs:
   build_and_push_docs:
-    runs-on: ubuntu-20.04
+    runs-on: 9apes
 
     steps:
     - name: Checkout
@@ -18,8 +18,8 @@ jobs:
         path: repo/
 
     - name: Build docker image with dependencies + build docs
-      run: docker build repo -f repo/scripts/docker/documentation.Dockerfile
-                                 -t astrobee:documentation
+      run: docker build repo -f repo/scripts/docker/documentation.Dockerfile -t 
+        astrobee:documentation
 
     - name: Checkout gh-pages
       uses: actions/checkout@v3
