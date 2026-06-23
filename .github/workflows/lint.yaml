@@ -14,7 +14,7 @@ jobs:
       run: ./scripts/git/cpplint_repo.py .
 
   lint_check_python:
-    runs-on: 9apes
+    runs-on: 9apesdev
 
     steps:
     - uses: actions/checkout@v3
