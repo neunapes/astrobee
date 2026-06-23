@@ -6,7 +6,7 @@ on: ['push', 'pull_request']
 
 jobs:
   build-jar-msgs:
-    runs-on: 9apes
+    runs-on: 9apesdev
 
     steps:
     - uses: actions/checkout@v3
