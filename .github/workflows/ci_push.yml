@@ -3,14 +3,14 @@ name: Build, test and push packages CI
 on:
   push:
     branches-ignore:
-      - gh-pages
-      - ros2
+    - gh-pages
+    - ros2
 
 jobs:
 
   build-focal:
 
-    runs-on: ubuntu-20.04
+    runs-on: 9apesdev
 
     steps:
     - uses: actions/checkout@v3
@@ -19,10 +19,11 @@ jobs:
       run: git submodule update --init --depth 1 description/media
 
     - name: Log in to registry
-      run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.repository_owner }} --password-stdin
+      run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ 
+        github.repository_owner }} --password-stdin
 
     - name: Build, test, push docker
-      run: >
+      run: >-
         revision="latest";
         build_arg="astrobee";
         push_arg="";
@@ -38,7 +39,8 @@ jobs:
             push_arg="push_astrobee_base push_astrobee";
           fi;
         fi;
-        command="./scripts/docker/build.sh --focal --remote --revision ${revision} \
+        command="./scripts/docker/build.sh --focal --remote --revision ${revision}
+        \
                                      --owner ${{ github.repository_owner }} \
                                      ${build_arg} test_astrobee ${push_arg}";
         echo "$command";
