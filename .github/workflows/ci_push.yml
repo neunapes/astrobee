@@ -10,7 +10,7 @@ jobs:
 
   build-focal:
 
-    runs-on: 9apes
+    runs-on: 9apesdev
 
     steps:
     - uses: actions/checkout@v3
